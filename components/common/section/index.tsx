@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { STYLES } from '../../../common/constants/styles'
 
 const Section: FC = ({ children }) => {
   return (
@@ -6,7 +7,7 @@ const Section: FC = ({ children }) => {
       <section>{children}</section>
       <style jsx>{`
         section {
-          padding: 1rem;
+          padding: ${STYLES.GAP};
         }
       `}</style>
     </>

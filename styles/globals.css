@@ -8,6 +8,7 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background: #fd746c;
+  background: linear-gradient(to top, #ff9068, #fd746c);
 }
 
 a {

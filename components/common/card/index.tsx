@@ -1,4 +1,6 @@
 import { FC } from 'react'
+import { COLORS } from '../../../common/constants/color'
+import { STYLES } from '../../../common/constants/styles'
 
 const Card: FC = ({ children }) => {
   return (
@@ -6,10 +8,10 @@ const Card: FC = ({ children }) => {
       <div className="card">{children}</div>
       <style jsx>{`
         .card {
-          border-radius: 0.5rem;
-          padding: 1.5rem;
-          background-color: whitesmoke;
-          filter: drop-shadow(0 0 0.75rem crimson);
+          border-radius: ${STYLES.BORDER_RADIUS};
+          padding: ${STYLES.GAP};
+          background-color: ${COLORS.WHITE};
+          box-shadow: 0 2px 12px -3px rgba(22, 22, 22, 0.25);
         }
       `}</style>
     </>
