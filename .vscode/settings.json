@@ -1,0 +1,21 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "package-lock.json": true,
+    "**/coverage": true
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.autoSave": "off",
+  "jest.autoRun": {
+    "watch": true
+  },
+  "scss.lint.duplicateProperties": "warning",
+  "scss.validate": true,
+  "tslint.exclude": "**/node_modules/**/*",
+  "tslint.ignoreDefinitionFiles": false,
+  "typescript.format.enable": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
