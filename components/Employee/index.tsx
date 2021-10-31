@@ -1,4 +1,5 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import dynamic from 'next/dynamic'
 import { FC } from 'react'
 import { useBreakpoint } from '../../common/hooks/useBreakpoint'
 import Card from '../common/Card'
@@ -12,8 +13,11 @@ import PhoneIcon from '../common/Icon/PhoneIcon'
 import Section from '../common/Section'
 import { useEmployeeContext } from './context'
 
+const Map = dynamic(() => import('./Map'), { ssr: false })
+
 const Employees: FC = () => {
   const [state] = useEmployeeContext()
+
   const { breakpoint } = useBreakpoint()
 
   const { employee } = state
@@ -41,39 +45,45 @@ const Employees: FC = () => {
             </Grid>
           </Section>
           <Section>
-            <Card>
-              <Grid
-                style={{
-                  gap: 'var(--default-gap)',
-                  gridTemplateColumns: isMobile ? '' : 'repeat(2, 1fr)'
-                }}
-              >
-                <div>
-                  <b>Company</b>
-                  <p>{employee.company.name}</p>
-                </div>
-                <div>
-                  <b>City</b>
-                  <p>{employee.address.city}</p>
-                </div>
-                <div>
-                  <b>Email</b>
-                  <p>
-                    <a className="link" href={`mailto:${employee.email}`}>
-                      {employee.email}
-                    </a>
-                  </p>
-                </div>
-                <div>
-                  <b>Phone number</b>
-                  <p>
-                    <a className="link" href={`tel:${employee.phone}`}>
-                      {employee.phone}
-                    </a>
-                  </p>
-                </div>
-              </Grid>
-            </Card>
+            <Grid style={{ gap: 'var(--default-gap)' }}>
+              <Card>
+                <Grid
+                  style={{
+                    gap: 'var(--default-gap)',
+                    gridTemplateColumns: isMobile ? '' : 'repeat(2, 1fr)'
+                  }}
+                >
+                  <div>
+                    <b>Company</b>
+                    <p>{employee.company.name}</p>
+                  </div>
+                  <div>
+                    <b>City</b>
+                    <p>{employee.address.city}</p>
+                  </div>
+                  <div>
+                    <b>Email</b>
+                    <p>
+                      <a className="link" href={`mailto:${employee.email}`}>
+                        {employee.email}
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <b>Phone number</b>
+                    <p>
+                      <a className="link" href={`tel:${employee.phone}`}>
+                        {employee.phone}
+                      </a>
+                    </p>
+                  </div>
+                </Grid>
+              </Card>
+
+              <Card>
+                <Map />
+              </Card>
+            </Grid>
           </Section>
         </Container>
       )}
