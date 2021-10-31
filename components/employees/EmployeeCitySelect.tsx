@@ -6,8 +6,6 @@ const EmployeeCitySelect: FC = () => {
   const [state, dispatch] = useEmployeesContext()
   const { aggregations } = state
 
-  // const debouncedValue = useDebounce(value)
-
   const handleChange = useCallback(
     event => {
       dispatch({
@@ -19,15 +17,6 @@ const EmployeeCitySelect: FC = () => {
     },
     [dispatch]
   )
-
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'SEARCH_EMPLOYEES',
-  //     payload: {
-  //       search: debouncedValue
-  //     }
-  //   })
-  // }, [dispatch, debouncedValue])
 
   return (
     <Select value={state.city} onChange={handleChange}>
