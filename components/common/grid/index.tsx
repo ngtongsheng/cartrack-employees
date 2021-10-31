@@ -3,7 +3,7 @@ import { CSSProperties, FC } from 'react'
 type GridProps = {
   style?: Pick<
     CSSProperties,
-    'gridGap' | 'gridAutoFlow' | 'gridTemplateColumns' | 'alignItems'
+    'gap' | 'gridAutoFlow' | 'gridTemplateColumns' | 'alignItems'
   >
 }
 

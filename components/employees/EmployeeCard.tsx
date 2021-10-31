@@ -1,8 +1,5 @@
 import { FC } from 'react'
-
-import { COLORS } from '../../common/constants/color'
-import { STYLES } from '../../common/constants/styles'
-import { Employee } from '../../pages/api/getEmployees'
+import { Employee } from '../../common/types'
 import Avatar from '../common/avatar'
 import Card from '../common/card'
 import Grid from '../common/grid'
@@ -25,8 +22,8 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
             style={{
               alignItems: 'center',
               gridAutoFlow: 'column',
-              gridTemplateColumns: 'min-content auto min-content min-content',
-              gridGap: STYLES.GAP
+              gridTemplateColumns: 'max-content auto max-content max-content',
+              gap: 'var(--default-gap)'
             }}
           >
             <Avatar name={name} />
@@ -41,7 +38,7 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
       </Link>
       <style jsx>{`
         .card :global(.icon) {
-          color: ${COLORS.DARK};
+          color: var(--color-dark);
         }
 
         .card :global(a:focus) {
@@ -49,11 +46,12 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
         }
 
         .card :global(a:focus > .icon) {
-          color: ${COLORS.PRIMARY};
+          color: var(--color-primary);
         }
 
-        .card :global(a:focus > .card) {
-          box-shadow: inset 0 0 0 5px ${COLORS.PRIMARY};
+        .card :global(a:focus > .card),
+        .card :global(a:hover > .card) {
+          box-shadow: inset 0 0 0 5px var(--color-primary);
         }
       `}</style>
     </div>

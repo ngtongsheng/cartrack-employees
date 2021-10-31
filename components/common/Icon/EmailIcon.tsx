@@ -1,18 +1,14 @@
 import { faAt } from '@fortawesome/free-solid-svg-icons'
 
 import { FC } from 'react'
-import Icon from '.'
+import LinkIcon from './LinkIcon'
 
 export type EmailIconProps = {
   email: string
 }
 
 const EmailIcon: FC<EmailIconProps> = ({ email }) => {
-  return (
-    <a href={`mailto:${email}`}>
-      <Icon icon={faAt} />
-    </a>
-  )
+  return <LinkIcon href={email} type="mailto" icon={faAt} />
 }
 
 export default EmailIcon

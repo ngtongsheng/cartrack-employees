@@ -1,18 +1,14 @@
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { FC } from 'react'
-import Icon from '.'
+import LinkIcon from './LinkIcon'
 
-export type EmailIconProps = {
+export type PhoneIconProps = {
   phone: string
 }
 
-const EmailIcon: FC<EmailIconProps> = ({ phone }) => {
-  return (
-    <a href={`tel:${phone}`}>
-      <Icon icon={faMobileAlt} />
-    </a>
-  )
+const PhoneIcon: FC<PhoneIconProps> = ({ phone }) => {
+  return <LinkIcon href={phone} type="tel" icon={faMobileAlt} />
 }
 
-export default EmailIcon
+export default PhoneIcon

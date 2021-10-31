@@ -1,10 +1,9 @@
 import { FC } from 'react'
-import { STYLES } from '../../common/constants/styles'
 import Container from '../common/container'
 import Grid from '../common/grid'
 import Section from '../common/section'
 import { useEmployeesContext } from './context'
-import EmployeesCard from './EmployeesCard'
+import EmployeeCard from './EmployeeCard'
 
 const Employees: FC = () => {
   const [state] = useEmployeesContext()
@@ -12,9 +11,13 @@ const Employees: FC = () => {
   return (
     <Container>
       <Section>
-        <Grid style={{ gridGap: `calc(${STYLES.GAP} / 2)` }}>
+        <Grid
+          style={{
+            gap: `calc(var(--default-gap) / 2)`
+          }}
+        >
           {employees?.map(employee => (
-            <EmployeesCard key={employee.id} employee={employee} />
+            <EmployeeCard key={employee.id} employee={employee} />
           ))}
         </Grid>
       </Section>

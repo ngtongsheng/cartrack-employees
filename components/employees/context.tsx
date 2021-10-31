@@ -7,7 +7,8 @@ import {
   useEffect,
   useReducer
 } from 'react'
-import { Employee } from '../../pages/api/getEmployees'
+import { Employee } from '../../common/types'
+
 import { getEmployees } from '../../services/employee.service'
 
 type EmployeeState = {
