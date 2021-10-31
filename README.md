@@ -14,6 +14,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can view the latest version on vercel [here](https://cartrack-employees.vercel.app/).
 
+![alt text](https://github.com/ngtongsheng/cartrack-employees/blob/main/qrcode.png?raw=true)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
