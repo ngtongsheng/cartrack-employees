@@ -20,30 +20,30 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
 
   return (
     <div className="card">
-      <Link href={`/${id}`}>
-        <Card>
-          <Grid
-            style={{
-              alignItems: 'center',
-              gridAutoFlow: 'column',
-              gridTemplateColumns: 'max-content auto max-content max-content  ',
-              gap: 'var(--default-gap)'
-            }}
-          >
-            <Avatar name={name} />
+      <Card>
+        <Grid
+          style={{
+            alignItems: 'center',
+            gridAutoFlow: 'column',
+            gridTemplateColumns: 'max-content auto max-content max-content  ',
+            gap: 'var(--default-gap)'
+          }}
+        >
+          <Avatar name={name} />
 
+          <Link href={`/${id}`}>
             <div>
               <b>
                 <HighlistText text={name} search={search} />
               </b>
               <HighlistText text={email} search={search} />
             </div>
+          </Link>
 
-            <EmailIcon email={email} />
-            <PhoneIcon phone={phone} />
-          </Grid>
-        </Card>
-      </Link>
+          <EmailIcon email={email} />
+          <PhoneIcon phone={phone} />
+        </Grid>
+      </Card>
       <style jsx>{`
         .card :global(.icon) {
           color: var(--color-dark);
@@ -58,8 +58,8 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
           color: var(--color-primary);
         }
 
-        .card :global(a:focus > .card),
-        .card :global(a:hover > .card) {
+        .card :global(.card:focus-within),
+        .card :global(.card:hover) {
           box-shadow: inset 0 0 0 5px var(--color-primary);
         }
       `}</style>

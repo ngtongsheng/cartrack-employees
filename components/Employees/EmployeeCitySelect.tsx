@@ -19,8 +19,8 @@ const EmployeeCitySelect: FC = () => {
   )
 
   return (
-    <Select value={state.city} onChange={handleChange}>
-      <option value="" selected disabled>
+    <Select defaultValue={state.city} onChange={handleChange}>
+      <option value="" disabled>
         Select a city
       </option>
       {aggregations?.cities.map(city => (

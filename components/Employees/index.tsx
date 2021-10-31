@@ -13,6 +13,7 @@ const Employees: FC = () => {
   const { breakpoint } = useBreakpoint()
   const isMobile = breakpoint === 'mobile'
   const { employees } = state
+
   return (
     <Container>
       <Section>
@@ -32,10 +33,13 @@ const Employees: FC = () => {
       </Section>
       <Section>
         {!employees && 'Loading...'}
-        {employees && !employees.length && 'No result.'}
-        {employees && !!employees.length && employees.length === 1
-          ? '1 result.'
-          : `${employees?.length} results.`}
+        {employees && (
+          <>
+            {!employees.length && 'No result.'}
+            {employees.length > 1 && `${employees?.length} results.`}
+            {employees.length === 1 && '1 result.'}
+          </>
+        )}
       </Section>
       <Section>
         <Grid
