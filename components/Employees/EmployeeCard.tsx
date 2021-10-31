@@ -32,10 +32,11 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
           <Avatar name={name} />
 
           <Link href={`/${id}`}>
-            <div>
-              <b>
-                <HighlistText text={name} search={search} />
-              </b>
+            <b>
+              <HighlistText text={name} search={search} />
+            </b>
+
+            <div className="email">
               <HighlistText text={email} search={search} />
             </div>
           </Link>
@@ -45,6 +46,16 @@ const EmployeesCard: FC<EmployeesCardProps> = ({ employee }) => {
         </Grid>
       </Card>
       <style jsx>{`
+        .email > :global(div),
+        .card :global(.grid > a) {
+          overflow: hidden;
+        }
+
+        .email > :global(div) {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
         .card :global(.icon) {
           color: var(--color-dark);
         }

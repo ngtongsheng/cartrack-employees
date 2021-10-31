@@ -10,7 +10,9 @@ type GridProps = {
 const Grid: FC<GridProps> = ({ style, children }) => {
   return (
     <>
-      <div style={style}>{children}</div>
+      <div style={style} className="grid">
+        {children}
+      </div>
       <style jsx>{`
         div {
           display: grid;
