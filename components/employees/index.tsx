@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { STYLES } from '../../common/constants/styles'
 import Container from '../common/container'
 import Grid from '../common/grid'
 import Section from '../common/section'
@@ -11,7 +12,7 @@ const Employees: FC = () => {
   return (
     <Container>
       <Section>
-        <Grid style={{ gridGap: '0.75rem' }}>
+        <Grid style={{ gridGap: `calc(${STYLES.GAP} / 2)` }}>
           {employees?.map(employee => (
             <EmployeesCard key={employee.id} employee={employee} />
           ))}

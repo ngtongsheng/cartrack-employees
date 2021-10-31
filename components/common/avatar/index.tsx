@@ -16,23 +16,18 @@ export default function Avatar({ name }: AvatarProps) {
       .toUpperCase() || ''
   )
 
-  const randomColor = useRef(
-    '#' + Math.floor(Math.random() * 999999 + 0x444444).toString(16)
-  )
-
   return (
     <>
       <div>{initial.current}</div>
       <style jsx>{`
         div {
-          background-color: ${randomColor.current};
+          background-color: ${COLORS.DARK};
           line-height: 3rem;
           width: 3rem;
           height: 3rem;
           border-radius: 50%;
           text-align: center;
           color: ${COLORS.WHITE};
-          filter: saturate(0.3);
         }
       `}</style>
     </>

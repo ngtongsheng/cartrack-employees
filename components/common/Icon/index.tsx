@@ -10,6 +10,11 @@ const Icon: FC<IconProps> = ({ icon }) => {
   return (
     <span className="icon">
       <FontAwesomeIcon icon={icon} />
+      <style jsx>{`
+        .icon :global(svg) {
+          font-size: 1.5em;
+        }
+      `}</style>
     </span>
   )
 }
