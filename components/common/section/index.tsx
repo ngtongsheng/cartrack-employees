@@ -6,7 +6,7 @@ const Section: FC = ({ children }) => {
       <section>{children}</section>
       <style jsx>{`
         section {
-          padding: var(--default-gap);
+          padding: calc(var(--default-gap) / 2);
         }
       `}</style>
     </>

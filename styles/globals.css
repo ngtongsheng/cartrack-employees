@@ -32,6 +32,7 @@ body {
   --color-dark: #555555;
   --color-primary: #fd746c;
   --default-gap: 1rem;
+  --default-control-height: 4rem;
   --default-border-radius: 0.375rem;
   --breakpoint: mobile;
   --interaction: touch;

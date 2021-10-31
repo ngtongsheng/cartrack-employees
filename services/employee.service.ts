@@ -1,5 +1,9 @@
 import axios from 'axios'
-import { Employee } from '../common/types'
+import {
+  Employee,
+  EmployeeSearchParams,
+  EmployeeSearchResponse
+} from '../common/types'
 
 export const getEmployee = async (
   id: string
@@ -13,12 +17,26 @@ export const getEmployee = async (
   }
 }
 
-export const getEmployees = async (): Promise<Employee[]> => {
+export const getEmployees = async ({
+  search = '',
+  city = ''
+}: EmployeeSearchParams): Promise<EmployeeSearchResponse> => {
   try {
-    const { data } = await axios.post<Employee[]>('/api/employees')
+    const { data } = await axios.post<EmployeeSearchResponse>(
+      '/api/employees',
+      {
+        search,
+        city
+      }
+    )
 
     return data
   } catch (error) {
-    return []
+    return {
+      employees: [],
+      aggregations: {
+        cities: []
+      }
+    }
   }
 }

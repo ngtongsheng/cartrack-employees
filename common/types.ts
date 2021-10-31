@@ -14,3 +14,18 @@ export type Employee = {
     name: string
   }
 }
+
+export type EmployeeSearchParams = {
+  search: string
+  city: string
+}
+
+export type EmployeeSearchAggregations = {
+  aggregations: {
+    cities: string[]
+  }
+}
+
+export type EmployeeSearchResponse = EmployeeSearchAggregations & {
+  employees: Employee[]
+}

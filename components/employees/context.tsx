@@ -7,26 +7,35 @@ import {
   useEffect,
   useReducer
 } from 'react'
-import { Employee } from '../../common/types'
+import { EmployeeSearchResponse } from '../../common/types'
 
 import { getEmployees } from '../../services/employee.service'
 
-type EmployeeState = {
-  employees?: Employee[]
+type EmployeeState = Partial<EmployeeSearchResponse> & {
+  search: string
+  city: string
 }
 
 type EmployeeAction =
   | {
       type: 'SUCCESS_GET_EMPLOYEES'
-      payload: Pick<EmployeeState, 'employees'>
+      payload: Pick<EmployeeState, 'employees' | 'aggregations'>
     }
   | {
       type: 'SEARCH_EMPLOYEES'
+      payload: Pick<EmployeeState, 'search'>
+    }
+  | {
+      type: 'FILTER_BY_CITY'
+      payload: Pick<EmployeeState, 'city'>
     }
 
 type EmployeesContext = [EmployeeState, Dispatch<EmployeeAction>]
 
-const initialState: Readonly<EmployeeState> = {}
+const initialState: Readonly<EmployeeState> = {
+  search: '',
+  city: ''
+}
 
 const reducer = (
   state: EmployeeState,
@@ -35,17 +44,32 @@ const reducer = (
   switch (action.type) {
     case 'SUCCESS_GET_EMPLOYEES': {
       const { payload } = action
-      const { employees } = payload
+      const { employees, aggregations } = payload
 
       return {
         ...state,
-        employees
+        employees,
+        aggregations
       }
     }
 
     case 'SEARCH_EMPLOYEES': {
+      const { payload } = action
+      const { search } = payload
+
       return {
-        ...state
+        ...state,
+        search
+      }
+    }
+
+    case 'FILTER_BY_CITY': {
+      const { payload } = action
+      const { city } = payload
+
+      return {
+        ...state,
+        city
       }
     }
 
@@ -62,22 +86,24 @@ const EmployeesContext = createContext<EmployeesContext | undefined>(undefined)
 
 export const EmployeesProvider: FC<EmployeesProviderProps> = ({ children }) => {
   const context = useReducer(reducer, initialState)
-  const [, dispatch] = context
+  const [state, dispatch] = context
+  const { search, city } = state
 
   useEffect(() => {
     const init = async () => {
-      const employees = await getEmployees()
+      const { employees, aggregations } = await getEmployees({ search, city })
 
       dispatch({
         type: 'SUCCESS_GET_EMPLOYEES',
         payload: {
-          employees
+          employees,
+          aggregations
         }
       })
     }
 
     init()
-  }, [dispatch])
+  }, [dispatch, search, city])
 
   return (
     <EmployeesContext.Provider value={context}>
