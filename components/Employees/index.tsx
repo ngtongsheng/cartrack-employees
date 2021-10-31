@@ -17,6 +17,7 @@ const Employees: FC = () => {
     <Container>
       <Section>
         <h1>Refine your search</h1>
+        <br />
 
         <Grid
           style={{
@@ -30,8 +31,9 @@ const Employees: FC = () => {
         </Grid>
       </Section>
       <Section>
-        {!employees?.length && 'No result.'}
-        {employees?.length && employees?.length === 1
+        {!employees && 'Loading...'}
+        {employees && !employees.length && 'No result.'}
+        {employees && !!employees.length && employees.length === 1
           ? '1 result.'
           : `${employees?.length} results.`}
       </Section>
