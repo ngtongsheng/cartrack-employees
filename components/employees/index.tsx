@@ -1,13 +1,21 @@
 import { FC } from 'react'
-import Card from '../common/card'
 import Container from '../common/container'
+import Grid from '../common/grid'
 import Section from '../common/section'
+import { useEmployeesContext } from './context'
+import EmployeesCard from './EmployeesCard'
 
 const Employees: FC = () => {
+  const [state] = useEmployeesContext()
+  const { employees } = state
   return (
     <Container>
       <Section>
-        <Card>Hello</Card>
+        <Grid style={{ gridGap: '0.75rem' }}>
+          {employees?.map(employee => (
+            <EmployeesCard key={employee.id} employee={employee} />
+          ))}
+        </Grid>
       </Section>
     </Container>
   )

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Employees from '../components/employees'
+import Employees from '../components/Employees'
+import { EmployeesProvider } from '../components/Employees/context'
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +15,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Employees />
+      <EmployeesProvider>
+        <Employees />
+      </EmployeesProvider>
     </>
   )
 }

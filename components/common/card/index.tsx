@@ -11,7 +11,7 @@ const Card: FC = ({ children }) => {
           border-radius: ${STYLES.BORDER_RADIUS};
           padding: ${STYLES.GAP};
           background-color: ${COLORS.WHITE};
-          box-shadow: 0 2px 12px -3px rgba(22, 22, 22, 0.25);
+          box-shadow: 0 2px 8px -3px rgba(22, 22, 22, 0.15);
         }
       `}</style>
     </>
